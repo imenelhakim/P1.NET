@@ -54,12 +54,13 @@ namespace GP.Console
             P1.products.Add(pr);
             P1.products.Add(pro);
             //P1.GetDetails();
+            
 
 
 
             //getproducts 
             P1.GetProducts("Price", "25");
-
+            System.Console.WriteLine("----");
 
             ////Scénario de test
             //Categories / Providers    CAT1              CAT2        CAT3        NULL
