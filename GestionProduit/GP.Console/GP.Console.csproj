@@ -54,6 +54,10 @@
       <Project>{ca86aa70-3291-43aa-bc38-9e5ddaa5f0fb}</Project>
       <Name>GP.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GP.Service\GP.Service.csproj">
+      <Project>{49a43ae6-833e-4671-afe6-4370dd06a0b7}</Project>
+      <Name>GP.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
