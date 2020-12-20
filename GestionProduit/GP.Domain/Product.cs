@@ -24,6 +24,14 @@ namespace GP.Domain
             this.providers = new List<Provider>();
         }
 
+        public Product(string name,DateTime dateProd, int quantity, double price)
+        {
+            Name = name;
+            DateProd = dateProd;
+            Quantity = quantity;
+            Price = price;
+        }
+
         public Product(DateTime dateProd, string description, string name, double price, int productId, int quantity)
         {
             DateProd = dateProd;

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.Domain", "GP.Domain\GP.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.Service", "GP.Service\GP.Service.csproj", "{49A43AE6-833E-4671-AFE6-4370DD06A0B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GP.Data", "GP.Data\GP.Data.csproj", "{77500E5F-E837-4105-A0CF-710A51273C5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{49A43AE6-833E-4671-AFE6-4370DD06A0B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49A43AE6-833E-4671-AFE6-4370DD06A0B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49A43AE6-833E-4671-AFE6-4370DD06A0B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77500E5F-E837-4105-A0CF-710A51273C5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77500E5F-E837-4105-A0CF-710A51273C5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77500E5F-E837-4105-A0CF-710A51273C5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77500E5F-E837-4105-A0CF-710A51273C5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

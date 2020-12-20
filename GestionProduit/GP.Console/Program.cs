@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GP.Domain;
+using GP.Data;
 
 using GP.Service;
 
@@ -15,118 +16,133 @@ namespace GP.Console
         {
 
             /*----------------------------------- 20/12/2020 --------------------------------------------*/
-            /*----------------------------------- DELEGATES --------------------------------------------*/
+            /*----------------------------------- DB --------------------------------------------*/
 
-            //1-add referrence GP.Service 
-            //2-using GP.Service;
-            //3-creation de la liste des produits
-            //Categories
-            Category fruit = new Category() { Name = "Fruit" };
-            Category Alimentaire = new Category() { Name = "Alimentaire" };
-
-            //Products
-            Product acideCitrique = new Chemical()
+            //instanciation de la classe gpcontest 
+            Model1 context = new Model1();
+            //persistance de données
+            Product p1 = new Product()
             {
-                DateProd = new DateTime(2000, 12, 12),
-                Name = "ACIDE CITRIQUE",
-                Description = "Monohydrate - E330 - USP32",
-                category = Alimentaire,
-                Price = 90,
-                Quantity = 30,
-            };
-            Product cacaoNaturelle = new Chemical()
-            {
-                DateProd = new DateTime(2000, 12, 12),
-                Name = "POUDRE DE CACAO NATURELLE",
-                Description = "10% -12%",
-                category = Alimentaire,
-                Price = 419,
-                Quantity = 80
-            };
-            Product cacaoAlcalinisee = new Chemical()
-            {
-                DateProd = new DateTime(2000, 12, 12),
-                Name = "POUDRE DE CACAO ALCALINISÉE",
-                Description = "10% -12%",
-                category = Alimentaire,
+                Name = "Bracelet",
+                DateProd = DateTime.Now,
                 Price = 60,
-                Quantity = 300
-            };
-            Product dioxyde = new Chemical()
-            {
-                DateProd = new DateTime(2000, 12, 12),
-                Name = "DIOXYDE DE TITANE",
-                Description = "TiO2 grade alimentaire, cosmétique et pharmaceutique.",
-                category = Alimentaire,
-                Price = 200,
-                Quantity = 50
-            };
-            Product amidon = new Chemical()
-            {
-                DateProd = new DateTime(2000, 12, 12),
-                Name = "AMIDON DE MAÏS",
-                Description = "Amidon de maïs natif",
-                category = Alimentaire,
-                Price = 70,
-                Quantity = 30
-            };
-            Product blackberry = new Biological()
-            {
-                DateProd = new DateTime(2000, 12, 12),
-                Name = "Blackberry",
-                Description = "",
-                category = fruit,
-                Price = 60,
-                ProductId = 0,
-                Quantity = 0
+                Quantity = 10
 
             };
 
-            Product apple = new Biological()
-            {
-                DateProd = new DateTime(2000, 12, 12),
-                Description = "",
-                category = fruit,
-                Name = "Apple",
-                Price = 100.00,
-                ProductId = 0,
-                Quantity = 100
+            context.products.Add(p1);
+            System.Console.WriteLine("ok");
+            context.SaveChanges();
 
-            };
-
-            List<Product> products = new List<Product>() { dioxyde, amidon, cacaoAlcalinisee, blackberry, apple, acideCitrique, cacaoNaturelle };
-
-            ProductManager pm = new ProductManager(products);
-            //pm.scan(fruit);
-            //pm.find("A");
-
-            pm.scan(fruit);
-
-            pm.FindProduct(
-                "a",
-                //delegate (String a)
-                (String a) =>
-                {
-                    //retourne l'indice de produit dont le nom commence par "c"*
-
-                    List<Product> newList = new List<Product>();
-                    foreach (Product p in products)
-                    {
-                        if (p.Name.StartsWith(a))
-                        {
-                            newList.Add(p);
-                        }
-                    }
-                    return newList;
-                }
-
-                );
-
-            pm.UpperName(apple);
-
+            System.Console.WriteLine("ok1");
 
 
             ///*----------------------------------- 20/12/2020 --------------------------------------------*/
+            ///*----------------------------------- DELEGATES --------------------------------------------*/
+
+            ////1-add referrence GP.Service 
+            ////2-using GP.Service;
+            ////3-creation de la liste des produits
+            ////Categories
+            //Category fruit = new Category() { Name = "Fruit" };
+            //Category Alimentaire = new Category() { Name = "Alimentaire" };
+
+            ////Products
+            
+            //Product cacaoNaturelle = new Chemical()
+            //{
+            //    DateProd = new DateTime(2000, 12, 12),
+            //    Name = "POUDRE DE CACAO NATURELLE",
+            //    Description = "10% -12%",
+            //    category = Alimentaire,
+            //    Price = 419,
+            //    Quantity = 80
+            //};
+            //Product cacaoAlcalinisee = new Chemical()
+            //{
+            //    DateProd = new DateTime(2000, 12, 12),
+            //    Name = "POUDRE DE CACAO ALCALINISÉE",
+            //    Description = "10% -12%",
+            //    category = Alimentaire,
+            //    Price = 60,
+            //    Quantity = 300
+            //};
+            //Product dioxyde = new Chemical()
+            //{
+            //    DateProd = new DateTime(2000, 12, 12),
+            //    Name = "DIOXYDE DE TITANE",
+            //    Description = "TiO2 grade alimentaire, cosmétique et pharmaceutique.",
+            //    category = Alimentaire,
+            //    Price = 200,
+            //    Quantity = 50
+            //};
+            //Product amidon = new Chemical()
+            //{
+            //    DateProd = new DateTime(2000, 12, 12),
+            //    Name = "AMIDON DE MAÏS",
+            //    Description = "Amidon de maïs natif",
+            //    category = Alimentaire,
+            //    Price = 70,
+            //    Quantity = 30
+            //};
+            //Product blackberry = new Biological()
+            //{
+            //    DateProd = new DateTime(2000, 12, 12),
+            //    Name = "Blackberry",
+            //    Description = "",
+            //    category = fruit,
+            //    Price = 60,
+            //    ProductId = 0,
+            //    Quantity = 0
+
+            //};
+
+            //Product apple = new Biological()
+            //{
+            //    DateProd = new DateTime(2000, 12, 12),
+            //    Description = "",
+            //    category = fruit,
+            //    Name = "Apple",
+            //    Price = 100.00,
+            //    ProductId = 0,
+            //    Quantity = 100
+
+            //};
+
+            //List<Product> products = new List<Product>() { dioxyde, amidon, cacaoAlcalinisee, blackberry, apple, cacaoNaturelle };
+
+            //ProductManager pm = new ProductManager(products);
+            ////pm.scan(fruit);
+            ////pm.find("A");
+
+            //pm.scan(fruit);
+
+            //pm.FindProduct(
+            //    "a",
+            //    //delegate (String a)
+            //    (String a) =>
+            //    {
+            //        //retourne l'indice de produit dont le nom commence par "c"*
+
+            //        List<Product> newList = new List<Product>();
+            //        foreach (Product p in products)
+            //        {
+            //            if (p.Name.StartsWith(a))
+            //            {
+            //                newList.Add(p);
+            //            }
+            //        }
+            //        return newList;
+            //    }
+
+            //    );
+
+            //pm.UpperName(apple);
+
+
+          
+
+            /////*----------------------------------- 20/12/2020 --------------------------------------------*/
 
 
 
@@ -175,7 +191,7 @@ namespace GP.Console
             //P1.products.Add(pr);
             //P1.products.Add(pro);
             ////P1.GetDetails();
-            
+
 
 
 
