@@ -15,26 +15,121 @@ namespace GP.Console
         static void Main(string[] args)
         {
 
-            /*----------------------------------- 20/12/2020 --------------------------------------------*/
-            /*----------------------------------- DB --------------------------------------------*/
+            /*----------------------------------- 21/12/2020 --------------------------------------------*/
+            /*----------------------------------- S6 --------------------------------------------*/
 
-            //instanciation de la classe gpcontest 
-            Model1 context = new Model1();
-            //persistance de données
-            Product p1 = new Product()
+            //Categories
+            Category fruit = new Category() { CategoryId=1, Name = "Fruit" };
+            Category Alimentaire = new Category() { CategoryId = 2, Name = "Alimentaire" };
+
+            //Products
+
+            Product cacaoNaturelle = new Chemical()
             {
-                Name = "Bracelet",
-                DateProd = DateTime.Now,
+                DateProd = new DateTime(2000, 12, 12),
+                Name = "POUDRE DE CACAO NATURELLE",
+                Description = "10% -12%",
+                category = fruit,
+                Price = 419,
+                Quantity = 80
+            };
+            Product cacaoAlcalinisee = new Chemical()
+            {
+                DateProd = new DateTime(2000, 12, 12),
+                Name = "POUDRE DE CACAO ALCALINISÉE",
+                Description = "10% -12%",
+                category = Alimentaire,
                 Price = 60,
-                Quantity = 10
+                Quantity = 300
+            };
+            Product dioxyde = new Chemical()
+            {
+                DateProd = new DateTime(2000, 12, 12),
+                Name = "DIOXYDE DE TITANE",
+                Description = "TiO2 grade alimentaire, cosmétique et pharmaceutique.",
+                category = Alimentaire,
+                Price = 200,
+                Quantity = 50
+            };
+            Product amidon = new Chemical()
+            {
+                DateProd = new DateTime(2000, 12, 12),
+                Name = "AMIDON DE MAÏS",
+                Description = "Amidon de maïs natif",
+                category = Alimentaire,
+                Price = 70,
+                Quantity = 30
+            };
+            Product blackberry = new Biological()
+            {
+                DateProd = new DateTime(2000, 12, 12),
+                Name = "Blackberry",
+                Description = "",
+                category = fruit,
+                Price = 60,
+                ProductId = 0,
+                Quantity = 0
 
             };
 
-            context.products.Add(p1);
-            System.Console.WriteLine("ok");
-            context.SaveChanges();
+            Product apple = new Biological()
+            {
+                DateProd = new DateTime(2000, 12, 12),
+                Description = "",
+                category = Alimentaire,
+                Name = "Apple",
+                Price = 100.00,
+                ProductId = 0,
+                Quantity = 100
 
-            System.Console.WriteLine("ok1");
+            };
+
+            List<Product> products = new List<Product>() { apple, dioxyde, amidon, cacaoAlcalinisee, blackberry, cacaoNaturelle };
+
+
+
+
+            //instanciation de la classe gpcontest 
+            Model1 context = new Model1(); 
+            context.Products.AddRange(products); //ajouter une liste de produits  
+            System.Console.WriteLine("ok");
+            context.SaveChanges(); //assure la persistance de données
+
+            //selection de touts les produits 
+            var query = from p in context.Products  //contient la liste des produits 
+                        select p;
+            //afficher la categorie du premier produit sauvergardé dans la base
+            var prod = query.First();   
+
+            var cat = prod.category;
+            System.Console.WriteLine("Produit");
+            prod.GetDetails();
+            System.Console.WriteLine("Categorie du Produit");
+            cat.GetDetails();
+
+
+            System.Console.ReadKey();
+
+            /*----------------------------------- 20/12/2020 --------------------------------------------*/
+            /*----------------------------------- DB --------------------------------------------*/
+
+            ////instanciation de la classe gpcontest 
+            //Model1 context = new Model1();
+            ////persistance de données
+            //Product p1 = new Product()
+            //{
+            //    Name = "Bracelet",
+            //    DateProd = DateTime.Now,
+            //    Price = 60,
+            //    Quantity = 10
+
+            //};
+
+            //context.products.Add(p1);
+            //System.Console.WriteLine("ok");
+            //context.SaveChanges(); //assure la persistance de données
+
+            //System.Console.WriteLine("ok1");
 
 
             ///*----------------------------------- 20/12/2020 --------------------------------------------*/
@@ -48,7 +143,7 @@ namespace GP.Console
             //Category Alimentaire = new Category() { Name = "Alimentaire" };
 
             ////Products
-            
+
             //Product cacaoNaturelle = new Chemical()
             //{
             //    DateProd = new DateTime(2000, 12, 12),
@@ -140,7 +235,7 @@ namespace GP.Console
             //pm.UpperName(apple);
 
 
-          
+
 
             /////*----------------------------------- 20/12/2020 --------------------------------------------*/
 

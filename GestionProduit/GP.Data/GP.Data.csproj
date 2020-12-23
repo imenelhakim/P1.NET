@@ -53,8 +53,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GpContext.cs" />
-    <Compile Include="GpContext1.cs" />
+    <Compile Include="Configurations\CategoryConfig.cs" />
+    <Compile Include="Configurations\ProductConfig.cs" />
+    <Compile Include="Migrations\202012222329597_conf-migration-data-annotation.cs" />
+    <Compile Include="Migrations\202012222329597_conf-migration-data-annotation.designer.cs">
+      <DependentUpon>202012222329597_conf-migration-data-annotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012230046284_productCategoryConfiguration.cs" />
+    <Compile Include="Migrations\202012230046284_productCategoryConfiguration.designer.cs">
+      <DependentUpon>202012230046284_productCategoryConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012230051518_productCategoryConfigurationUpdated.cs" />
+    <Compile Include="Migrations\202012230051518_productCategoryConfigurationUpdated.designer.cs">
+      <DependentUpon>202012230051518_productCategoryConfigurationUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,7 +80,23 @@
       <Project>{ca86aa70-3291-43aa-bc38-9e5ddaa5f0fb}</Project>
       <Name>GP.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GP.Service\GP.Service.csproj">
+      <Project>{49a43ae6-833e-4671-afe6-4370dd06a0b7}</Project>
+      <Name>GP.Service</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202012222329597_conf-migration-data-annotation.resx">
+      <DependentUpon>202012222329597_conf-migration-data-annotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012230046284_productCategoryConfiguration.resx">
+      <DependentUpon>202012230046284_productCategoryConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012230051518_productCategoryConfigurationUpdated.resx">
+      <DependentUpon>202012230051518_productCategoryConfigurationUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

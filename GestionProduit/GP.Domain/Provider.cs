@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,12 +11,19 @@ namespace GP.Domain
     public class Provider : Concept
     {
         public DateTime DateCreated { get; set; }
+
+        [Required][DataType(DataType.EmailAddress)]
+        //ou [EmailAddress]
         public string Email { get; set; }
+
+        [Key]
         public int Id { get; set; }
         public bool IsApproved { get; set; }
 
         //définir un attribut de type private
         //password entre 5 et 20
+
+        [Required][MinLength(8)][DataType(DataType.Password)]
         private string password;
         public string Password { 
             get{ return password; } 
@@ -39,6 +48,9 @@ namespace GP.Domain
         }        //retoure la valeur de l'attribut password
 
         private string confirmPassword;
+
+        [Compare("Password")][Required][DataType(DataType.Password)][NotMapped]
+        //NotMapped utilisée au niveau de l'application
         public string ConfirmPassword {
             get { return confirmPassword; }
             set
@@ -56,7 +68,7 @@ namespace GP.Domain
 
         public string UserName { get; set; }
 
-        public List<Product> products { get; set; }
+        public virtual List<Product> products { get; set; }
 
         //instantiation de la liste 
         public Provider()
